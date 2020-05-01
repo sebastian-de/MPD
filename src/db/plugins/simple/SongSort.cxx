@@ -99,8 +99,18 @@ song_cmp(const Song &a, const Song &b) noexcept
 	return IcuCollate(a.filename, b.filename) < 0;
 }
 
-void
-song_list_sort(SongList &songs) noexcept
+gcc_pure
+static bool
+song_cmp_filename(const Song &a, const Song &b) noexcept
 {
-	songs.sort(song_cmp);
+	return IcuCollate(a.filename, b.filename) < 0;
+}
+
+void
+song_list_sort(SongList &songs, bool sort_by_filename) noexcept
+{
+	if (sort_by_filename)
+		songs.sort(song_cmp_filename);
+    else
+		songs.sort(song_cmp);
 }

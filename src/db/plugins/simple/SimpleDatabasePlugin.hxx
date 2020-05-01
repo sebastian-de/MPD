@@ -45,6 +45,8 @@ class SimpleDatabase : public Database {
 	bool compress;
 #endif
 
+	bool sort_by_filename;
+
 	/**
 	 * The path where cache files for Mount() are located.
 	 */

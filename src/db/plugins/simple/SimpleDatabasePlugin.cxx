@@ -66,6 +66,8 @@ inline SimpleDatabase::SimpleDatabase(const ConfigBlock &block)
 		throw std::runtime_error("No \"path\" parameter specified");
 
 	path_utf8 = path.ToUTF8();
+
+	sort_by_filename = block.GetBlockValue("sort_by_filename", false);;
 }
 
 inline SimpleDatabase::SimpleDatabase(AllocatedPath &&_path,
@@ -353,7 +355,7 @@ SimpleDatabase::Save()
 		root->PruneEmpty();
 
 		LogDebug(simple_db_domain, "sorting DB");
-		root->Sort();
+		root->Sort(sort_by_filename);
 	}
 
 	LogDebug(simple_db_domain, "writing DB");

@@ -23,6 +23,8 @@ The default plugin. Stores a copy of the database in memory. A file is used for 
      - The path of the cache directory for additional storages mounted at runtime. This setting is necessary for the **mount** protocol command.
    * - **compress yes|no**
      - Compress the database file using gzip? Enabled by default (if built with zlib).
+   * - **sort_by_filename yes|no**
+     - Sort database entries by filename? Disabled by default.
 
 proxy
 -----
